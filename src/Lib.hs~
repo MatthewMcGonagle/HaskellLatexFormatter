@@ -1,0 +1,8 @@
+module Lib
+    ( someFunc
+    ) where
+
+import Control.Monad.State
+
+someFunc :: IO ()
+someFunc = putStrLn "someFunc"

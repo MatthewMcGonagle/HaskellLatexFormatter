@@ -1,0 +1,273 @@
+
+==================== FINAL INTERFACE ====================
+2016-07-27 23:06:53.5094825 UTC
+
+interface main@main:Main 7103
+  interface hash: 518def9fd0be5a9b69d53feacc0bf052
+  ABI hash: 97c6092ab4c3cd41acff0a887ef0e665
+  export-list hash: 01a918d9db372ebaafe6704b4d848b84
+  orphan hash: 693e9af84d3dfcc71e640e005bdc5e2e
+  flag hash: e39fd44538d1fe1f8911dac17db8256e
+  sig of: Nothing
+  used TH splices: False
+  where
+exports:
+  Main.main
+module dependencies:
+package dependencies: HaskellLatexFormatter-0.1.0.0@Haske_CCsxScH00Fh29Ph7qS09DD
+                      base-4.8.2.0* ghc-prim-0.4.0.0 integer-gmp-1.0.0.0
+                      mtl-2.2.1@mtl_Aue4leSeVkpKLsfHIV51E8
+                      transformers-0.4.2.0@trans_GZTjP9K5WFq01xC9BAGQpF
+orphans: base-4.8.2.0:GHC.Base base-4.8.2.0:GHC.Float
+         transformers-0.4.2.0@trans_GZTjP9K5WFq01xC9BAGQpF:Control.Monad.Trans.Error
+family instance modules: base-4.8.2.0:Control.Applicative
+                         base-4.8.2.0:Data.Either base-4.8.2.0:Data.Functor.Identity
+                         base-4.8.2.0:Data.Monoid base-4.8.2.0:Data.Type.Equality
+                         base-4.8.2.0:GHC.Generics
+import  -/  HaskellLatexFormatter-0.1.0.0@Haske_CCsxScH00Fh29Ph7qS09DD:LatexFormatter b0b063c40c77ff449b337c3e908a4bfc
+import  -/  HaskellLatexFormatter-0.1.0.0@Haske_CCsxScH00Fh29Ph7qS09DD:Lib 4b084d1280c0e845cd54fa4ccffcd097
+import  -/  base-4.8.2.0:Data.Traversable 7576318f4ef8587ad947f87012b65abf
+import  -/  base-4.8.2.0:Data.Tuple 012ad951a59a9d85fe1de36a2f012986
+import  -/  base-4.8.2.0:GHC.Base a4939789b2cfd60b36ed163e56a623cd
+import  -/  base-4.8.2.0:Prelude 694dcaf039efe62df1c44834e2dbd2fb
+import  -/  base-4.8.2.0:System.IO 638c10c4fd4901a0aca5b77c9f14123d
+import  -/  ghc-prim-0.4.0.0:GHC.Types 6b27fb3fdbd0e3f0925a4496c66513bb
+import  -/  mtl-2.2.1@mtl_Aue4leSeVkpKLsfHIV51E8:Control.Monad.State 3c8114545920fee1e57c3d7a07c2d0d7
+import  -/  transformers-0.4.2.0@trans_GZTjP9K5WFq01xC9BAGQpF:Control.Monad.Trans.State.Lazy 442cc9f80155d8aaed5b22580b659d92
+c9daf0b9d1ac608a61d397f05016251c
+  main :: GHC.Types.IO ()
+  {- Arity: 1, Strictness: <L,U>,
+     Unfolding: InlineRule (0, True, True)
+                Main.main1 `cast` (Sym (GHC.Types.NTCo:IO[0] <()>_R)) -}
+09bf9c0b17e6638ccf6d435258ca2ad4
+  main1 ::
+    GHC.Prim.State# GHC.Prim.RealWorld
+    -> (# GHC.Prim.State# GHC.Prim.RealWorld, () #)
+  {- Arity: 1, Strictness: <L,U>,
+     Unfolding: (\ s :: GHC.Prim.State# GHC.Prim.RealWorld[OneShot] ->
+                 case GHC.IO.Handle.Text.hPutStr2
+                        GHC.IO.Handle.FD.stdout
+                        Main.main26
+                        GHC.Types.True
+                        s of ds1 { (#,#) ipv ipv1 ->
+                 case Main.main25 Main.main24 ipv of ds2 { (#,#) ipv2 ipv3 ->
+                 case GHC.IO.Handle.Text.hPutStr2
+                        GHC.IO.Handle.FD.stdout
+                        Main.main23
+                        GHC.Types.True
+                        ipv2 of ds3 { (#,#) ipv4 ipv5 ->
+                 case Main.main22 Main.main21 ipv4 of ds4 { (#,#) ipv6 ipv7 ->
+                 case GHC.IO.Handle.Text.hPutStr2
+                        GHC.IO.Handle.FD.stdout
+                        Main.main20
+                        GHC.Types.True
+                        ipv6 of ds5 { (#,#) ipv8 ipv9 ->
+                 case Main.main19 Main.main17 ipv8 of ds6 { (#,#) ipv10 ipv11 ->
+                 case GHC.IO.Handle.Text.hPutStr2
+                        GHC.IO.Handle.FD.stdout
+                        Main.main16
+                        GHC.Types.True
+                        ipv10 of ds7 { (#,#) ipv12 ipv13 ->
+                 case Main.main15 Main.main2 ipv12 of ds8 { (#,#) ipv14 ipv15 ->
+                 (# ipv14, GHC.Tuple.() #) } } } } } } } }) -}
+6c5634c903ef442494da602df9cac22b
+  main10 :: [GHC.Types.Char]
+  {- Unfolding: (GHC.CString.unpackAppendCString#
+                   "     "#
+                   Main.main11) -}
+2552c147f2981271fd3dbb333f70c256
+  main11 :: [GHC.Types.Char]
+  {- Unfolding: (GHC.Types.:
+                   @ GHC.Types.Char
+                   Main.main13
+                   Main.main12) -}
+535993cb9fd69ff8ca0f55e042048af2
+  main12 :: [GHC.Types.Char]
+  {- Unfolding: (GHC.CString.unpackCString#
+                   "documentclass{article}"#) -}
+fb4315223726d695e0f3a9fba1e194e1
+  main13 :: GHC.Types.Char
+  {- HasNoCafRefs, Unfolding: (GHC.Types.C# '\\') -}
+cb050fc4b0035e3458f6e47e7411376d
+  main14 ::
+    [LatexFormatter.Token]
+    -> GHC.Prim.State# GHC.Prim.RealWorld
+    -> (# GHC.Prim.State# GHC.Prim.RealWorld, () #)
+  {- Arity: 2,
+     Unfolding: (\ x :: [LatexFormatter.Token]
+                   eta :: GHC.Prim.State# GHC.Prim.RealWorld[OneShot] ->
+                 GHC.IO.Handle.Text.hPutStr2
+                   GHC.IO.Handle.FD.stdout
+                   (LatexFormatter.convertTokenlist_go x)
+                   GHC.Types.True
+                   eta) -}
+d3b953e1ef0d654114316b93abafacce
+  main15 ::
+    [GHC.Types.IO ()]
+    -> GHC.Prim.State# GHC.Prim.RealWorld
+    -> (# GHC.Prim.State# GHC.Prim.RealWorld, [()] #)
+  {- Arity: 2, HasNoCafRefs, Strictness: <S,1*U><L,U> -}
+6ea013d2856c469a90dc41432a0c2139
+  main16 :: [GHC.Types.Char]
+  {- Unfolding: (GHC.CString.unpackCString#
+                   "\n\
+                   \As a list of String:"#) -}
+490a32a7d261f494ecd974b65fc2434a
+  main17 :: [GHC.Types.IO ()]
+  {- Unfolding: (GHC.Base.map
+                   @ [LatexFormatter.Token]
+                   @ (GHC.Types.IO ())
+                   Main.main18
+                     `cast`
+                   (<[LatexFormatter.Token]>_R ->_R Sym (GHC.Types.NTCo:IO[0] <()>_R))
+                   Main.main_newtokenlists) -}
+de2f3c6807ea6f5f2fc43f8a8b2720eb
+  main18 ::
+    [LatexFormatter.Token]
+    -> GHC.Prim.State# GHC.Prim.RealWorld
+    -> (# GHC.Prim.State# GHC.Prim.RealWorld, () #)
+  {- Arity: 2,
+     Unfolding: (\ x :: [LatexFormatter.Token]
+                   eta :: GHC.Prim.State# GHC.Prim.RealWorld[OneShot] ->
+                 GHC.IO.Handle.Text.hPutStr2
+                   GHC.IO.Handle.FD.stdout
+                   (GHC.Show.$fShow[]_$s$cshow2 x)
+                   GHC.Types.True
+                   eta) -}
+0ed00a419125992ec042c3c8143c6d1a
+  main19 ::
+    [GHC.Types.IO ()]
+    -> GHC.Prim.State# GHC.Prim.RealWorld
+    -> (# GHC.Prim.State# GHC.Prim.RealWorld, [()] #)
+  {- Arity: 2, HasNoCafRefs, Strictness: <S,1*U><L,U> -}
+0ad40162384de2a087751aca074bee9f
+  main2 :: [GHC.Types.IO ()]
+  {- Unfolding: (GHC.Base.map
+                   @ [LatexFormatter.Token]
+                   @ (GHC.Types.IO ())
+                   Main.main14
+                     `cast`
+                   (<[LatexFormatter.Token]>_R ->_R Sym (GHC.Types.NTCo:IO[0] <()>_R))
+                   Main.main_newtokenlists) -}
+1a3959aaf3857d8c9893951c519d09d6
+  main20 :: [GHC.Types.Char]
+  {- Unfolding: (GHC.CString.unpackCString#
+                   "\n\
+                   \After Indent Processing:"#) -}
+ed4496cc8a0dcc8982294ead3684a4fe
+  main21 :: [GHC.Types.IO ()]
+  {- Unfolding: (GHC.Base.map
+                   @ [LatexFormatter.Token]
+                   @ (GHC.Types.IO ())
+                   Main.main18
+                     `cast`
+                   (<[LatexFormatter.Token]>_R ->_R Sym (GHC.Types.NTCo:IO[0] <()>_R))
+                   Main.main_tokenlists) -}
+c4410eedd576cbd8cb5af4914136addc
+  main22 ::
+    [GHC.Types.IO ()]
+    -> GHC.Prim.State# GHC.Prim.RealWorld
+    -> (# GHC.Prim.State# GHC.Prim.RealWorld, [()] #)
+  {- Arity: 2, HasNoCafRefs, Strictness: <S,1*U><L,U> -}
+3b939d510350bd2df12a5637bee828e7
+  main23 :: [GHC.Types.Char]
+  {- Unfolding: (GHC.CString.unpackCString#
+                   "\n\
+                   \As a list of Token:"#) -}
+2d3ced0f45c0ab4b419710ac7b80a1c7
+  main24 :: [GHC.Types.IO ()]
+  {- Unfolding: (GHC.Base.map
+                   @ [GHC.Types.Char]
+                   @ (GHC.Types.IO ())
+                   System.IO.putStrLn1
+                     `cast`
+                   (<GHC.Base.String>_R ->_R Sym (GHC.Types.NTCo:IO[0] <()>_R))
+                   Main.main_mystringlist) -}
+55c40d3dc00785db2b261c5b4d72d70b
+  main25 ::
+    [GHC.Types.IO ()]
+    -> GHC.Prim.State# GHC.Prim.RealWorld
+    -> (# GHC.Prim.State# GHC.Prim.RealWorld, [()] #)
+  {- Arity: 2, HasNoCafRefs, Strictness: <S,1*U><L,U> -}
+984cb7e27e6a286a6f4ef80342ed23bd
+  main26 :: [GHC.Types.Char]
+  {- Unfolding: (GHC.CString.unpackCString#
+                   "\n\
+                   \Initial Input String List:"#) -}
+5050c32a7ebf485121131cfc70915dd1
+  main27 ::
+    GHC.Prim.State# GHC.Prim.RealWorld
+    -> (# GHC.Prim.State# GHC.Prim.RealWorld, () #)
+  {- Arity: 1,
+     Unfolding: (GHC.TopHandler.runMainIO1
+                   @ ()
+                   Main.main1 `cast` (Sym (GHC.Types.NTCo:IO[0] <()>_R))) -}
+59632552c8a0ed1f6453e3507886e3da
+  main3 :: GHC.Types.Int
+  {- HasNoCafRefs, Unfolding: (GHC.Types.I# 0) -}
+e8af3d233ffb66320669d8babb49cea4
+  main4 :: [[GHC.Types.Char]]
+  {- Strictness: m2,
+     Unfolding: (GHC.Types.:
+                   @ [GHC.Types.Char]
+                   Main.main9
+                   Main.main5) -}
+77ddf574faf8c32adc0ee08f850d6d98
+  main5 :: [[GHC.Types.Char]]
+  {- Strictness: m2,
+     Unfolding: (GHC.Types.:
+                   @ [GHC.Types.Char]
+                   Main.main8
+                   Main.main6) -}
+0ba123ae32c3c227d920444ffa43f2ce
+  main6 :: [[GHC.Types.Char]]
+  {- Strictness: m2,
+     Unfolding: (GHC.Types.:
+                   @ [GHC.Types.Char]
+                   Main.main7
+                   (GHC.Types.[] @ [GHC.Types.Char])) -}
+af5febfd1c1de10db86e6a8c5b0a319c
+  main7 :: [GHC.Types.Char]
+  {- Unfolding: (GHC.CString.unpackCString# "  \\end{document}"#) -}
+38903a68bf621686022bcac2c557708d
+  main8 :: [GHC.Types.Char]
+  {- Unfolding: (GHC.CString.unpackCString# "  Hello World!!!!"#) -}
+1e5a7dac3a0d69279d2091224cec1e49
+  main9 :: [GHC.Types.Char]
+  {- Unfolding: (GHC.CString.unpackCString#
+                   "  \\begin{document}"#) -}
+ff9d74446e25587dd80c0f0533842b10
+  main_mystringlist :: [[GHC.Types.Char]]
+  {- Strictness: m2,
+     Unfolding: (GHC.Types.:
+                   @ [GHC.Types.Char]
+                   Main.main10
+                   Main.main4) -}
+430601581ec57664a5b2e71a3f386f5f
+  main_newtokenlists :: [[LatexFormatter.Token]]
+  {- Unfolding: (case Main.main_tokenlists of wild {
+                   [] -> GHC.Types.[] @ [LatexFormatter.Token]
+                   : ipv ipv1
+                   -> case LatexFormatter.$wa
+                             wild
+                             (GHC.Types.[] @ [LatexFormatter.Token])
+                             Main.main3 of ww { (#,#) ww1 ww2 ->
+                      GHC.List.reverse1
+                        @ [LatexFormatter.Token]
+                        ww1
+                        (GHC.Types.[] @ [LatexFormatter.Token]) } }) -}
+2f1d311bc29ed3b7c8febf51793f94c5
+  main_tokenlists :: [[LatexFormatter.Token]]
+  {- Unfolding: (GHC.Base.map
+                   @ [GHC.Types.Char]
+                   @ [LatexFormatter.Token]
+                   LatexFormatter.tokenize
+                   Main.main_mystringlist) -}
+vectorised variables:
+vectorised tycons:
+vectorised reused tycons:
+parallel variables:
+parallel tycons:
+trusted: safe
+require own pkg trusted: False
+
