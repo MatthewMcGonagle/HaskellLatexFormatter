@@ -52,8 +52,11 @@ processIndent x = do
      where accIndentmap :: [[Token]] -> [Token] -> State Indent [[Token]]
            accIndentmap acc y = do
                 currentIndent <- get
-                let newIndent = currentIndent + (findIndentchange y) 
-                    newTokenlist = (replicate (4*newIndent) ' '):y
+                let indentchange = findIndentchange y
+                    newIndent = currentIndent + indentchange 
+                    newTokenlist = case indentchange > 0 of 
+                         True -> (replicate (4*currentIndent) ' '):y
+                         False -> (replicate (4*newIndent) ' '):y 
                 put newIndent
                 return (newTokenlist:acc)
 

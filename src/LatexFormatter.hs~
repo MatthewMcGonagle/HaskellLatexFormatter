@@ -53,7 +53,7 @@ processIndent x = do
            accIndentmap acc y = do
                 currentIndent <- get
                 let newIndent = currentIndent + (findIndentchange y) 
-                    newTokenlist = (replicate (4*newIndent) ' '):y
+                    newTokenlist = (replicate (4*currentIndent) ' '):y
                 put newIndent
                 return (newTokenlist:acc)
 
@@ -61,6 +61,7 @@ convertTokentoString :: Token -> String
 convertTokentoString x  
     | x == [] = x 
     | 'a' < head x && head x < 'z' = ' ':x
+    | 'A' < head x && head x < 'Z' = ' ':x
     | otherwise = x
 
 convertTokenlist :: [Token] -> String
