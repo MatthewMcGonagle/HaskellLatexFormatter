@@ -3,25 +3,25 @@ module Main where
 import Lib
 import Control.Monad.State
 import LatexFormatter
+import System.IO
 
 main :: IO ()
 main = do
-    let mystringlist = [ "     " ++ ['\\'] ++ "documentclass{article}"
-                       , "  \\begin{document}"
-                       , "  Hello World!!!!"
-                       , "  \\end{document}"
-                       ]
+    handle <- openFile "example.tex" ReadMode
+    contents <- hGetContents handle
+    let mystringlist = lines contents
         tokenlists = map tokenize mystringlist
-    putStrLn "\nInitial Input String List:"
+    putStrLn "\nInput as a list of String:"
     sequence $ map putStrLn mystringlist
 
-    putStrLn "\nAs a list of Token:"
-    sequence $ map print tokenlists
     let statelist = processIndent tokenlists 
         newtokenlists = fst $ runState statelist 0
         newstringlist = map convertTokenlist newtokenlists
-    putStrLn "\nAfter Indent Processing:"
+    putStrLn "\nAs lists of Token after Indent processing:"
     sequence $ map print newtokenlists
-    putStrLn "\nAs a list of String:"
+
+    putStrLn "\nOutput as a list of String:"
     sequence $ map putStrLn newstringlist
+    
+    hClose handle
     return ()
