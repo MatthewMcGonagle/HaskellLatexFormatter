@@ -1,10 +1,10 @@
 
 ==================== FINAL INTERFACE ====================
-2016-07-30 00:49:35.7697101 UTC
+2016-07-30 03:01:24.7776033 UTC
 
 interface main@main:Main 7103
-  interface hash: b2da4c8c8cda3184e1a548086884727e
-  ABI hash: b4189d306b8fd20123a4c354d6e4b127
+  interface hash: 97cbff64a8a3e0021612d2310cd964a4
+  ABI hash: cb6c4338a772a866de5aeb83fb474066
   export-list hash: 01a918d9db372ebaafe6704b4d848b84
   orphan hash: 693e9af84d3dfcc71e640e005bdc5e2e
   flag hash: e39fd44538d1fe1f8911dac17db8256e
@@ -24,7 +24,7 @@ family instance modules: base-4.8.2.0:Control.Applicative
                          base-4.8.2.0:Data.Either base-4.8.2.0:Data.Functor.Identity
                          base-4.8.2.0:Data.Monoid base-4.8.2.0:Data.Type.Equality
                          base-4.8.2.0:GHC.Generics
-import  -/  HaskellLatexFormatter-0.1.0.0@Haske_CCsxScH00Fh29Ph7qS09DD:LatexFormatter b0b063c40c77ff449b337c3e908a4bfc
+import  -/  HaskellLatexFormatter-0.1.0.0@Haske_CCsxScH00Fh29Ph7qS09DD:LatexFormatter 1067c1435e3baf8cc476b847236356b0
 import  -/  HaskellLatexFormatter-0.1.0.0@Haske_CCsxScH00Fh29Ph7qS09DD:Lib 4b084d1280c0e845cd54fa4ccffcd097
 import  -/  base-4.8.2.0:Data.OldList d8fd80b0e14aa085ce6219cd89dad356
 import  -/  base-4.8.2.0:Data.Traversable 7576318f4ef8587ad947f87012b65abf
@@ -39,12 +39,18 @@ import  -/  base-4.8.2.0:System.IO 638c10c4fd4901a0aca5b77c9f14123d
 import  -/  ghc-prim-0.4.0.0:GHC.Types 6b27fb3fdbd0e3f0925a4496c66513bb
 import  -/  mtl-2.2.1@mtl_Aue4leSeVkpKLsfHIV51E8:Control.Monad.State 3c8114545920fee1e57c3d7a07c2d0d7
 import  -/  transformers-0.4.2.0@trans_GZTjP9K5WFq01xC9BAGQpF:Control.Monad.Trans.State.Lazy 442cc9f80155d8aaed5b22580b659d92
-2de2194e93b5c815ffdf5f48708b2aac
+b219bd9a570b222e131f3198c0803f2f
+  $wa ::
+    [[GHC.Types.Char]]
+    -> LatexFormatter.Indent
+    -> (# [[LatexFormatter.Token]], LatexFormatter.Indent #)
+  {- Arity: 2, Strictness: <S,1*U><L,U(U)>, Inline: [0] -}
+4d136b0307591804dcd03a108c1037ee
   main :: GHC.Types.IO ()
   {- Arity: 1, Strictness: <L,U>,
      Unfolding: InlineRule (0, True, True)
                 Main.main1 `cast` (Sym (GHC.Types.NTCo:IO[0] <()>_R)) -}
-c8a4e8ad00f7ab91cadbadc2c2fa90bb
+ead5a6a7277c6323cec883a4564b8f05
   main1 ::
     GHC.Prim.State# GHC.Prim.RealWorld
     -> (# GHC.Prim.State# GHC.Prim.RealWorld, () #)
@@ -79,24 +85,7 @@ c8a4e8ad00f7ab91cadbadc2c2fa90bb
                         Main.main8
                         GHC.Types.True
                         ipv6 of ds5 { (#,#) ipv8 ipv9 ->
-                 let {
-                   newtokenlists :: [[LatexFormatter.Token]]
-                   = case GHC.Base.map
-                            @ [GHC.Types.Char]
-                            @ [LatexFormatter.Token]
-                            LatexFormatter.tokenize
-                            mystringlist of wild {
-                       [] -> GHC.Types.[] @ [LatexFormatter.Token]
-                       : ipv10 ipv11
-                       -> case LatexFormatter.$wa
-                                 wild
-                                 (GHC.Types.[] @ [LatexFormatter.Token])
-                                 Main.main7 of ww { (#,#) ww1 ww2 ->
-                          GHC.List.reverse1
-                            @ [LatexFormatter.Token]
-                            ww1
-                            (GHC.Types.[] @ [LatexFormatter.Token]) } }
-                 } in
+                 case Main.$wa mystringlist Main.main7 of ww { (#,#) ww1 ww2 ->
                  case Main.main6
                         (GHC.Base.map
                            @ [LatexFormatter.Token]
@@ -104,7 +93,7 @@ c8a4e8ad00f7ab91cadbadc2c2fa90bb
                            Main.main5
                              `cast`
                            (<[LatexFormatter.Token]>_R ->_R Sym (GHC.Types.NTCo:IO[0] <()>_R))
-                           newtokenlists)
+                           ww1)
                         ipv8 of ds6 { (#,#) ipv10 ipv11 ->
                  case GHC.IO.Handle.Text.hPutStr2
                         GHC.IO.Handle.FD.stdout
@@ -118,10 +107,10 @@ c8a4e8ad00f7ab91cadbadc2c2fa90bb
                            Main.main2
                              `cast`
                            (<[LatexFormatter.Token]>_R ->_R Sym (GHC.Types.NTCo:IO[0] <()>_R))
-                           newtokenlists)
+                           ww1)
                         ipv12 of ds8 { (#,#) ipv14 ipv15 ->
                  case GHC.IO.Handle.hClose1 ipv1 ipv14 of ds9 { (#,#) ipv16 ipv17 ->
-                 (# ipv16, GHC.Tuple.() #) } } } } } } } } }) -}
+                 (# ipv16, GHC.Tuple.() #) } } } } } } } } } }) -}
 d6d08d32bedeba41885b010d2052c1ab
   main10 :: [GHC.Types.Char]
   {- Unfolding: (GHC.CString.unpackCString#
@@ -130,7 +119,7 @@ d6d08d32bedeba41885b010d2052c1ab
 334f3f0c167b774fed04789a6dbf1cfc
   main11 :: [GHC.Types.Char]
   {- Unfolding: (GHC.CString.unpackCString# "example.tex"#) -}
-3dacc8b02d60bfb6cc48ba9ca7b4e00a
+51b7b1cf9646c7fc121beebc471bed61
   main12 ::
     GHC.Prim.State# GHC.Prim.RealWorld
     -> (# GHC.Prim.State# GHC.Prim.RealWorld, () #)

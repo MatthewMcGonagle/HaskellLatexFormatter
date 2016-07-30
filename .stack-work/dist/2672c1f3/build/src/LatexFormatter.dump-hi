@@ -1,12 +1,12 @@
 
 ==================== FINAL INTERFACE ====================
-2016-07-28 23:15:52.2222726 UTC
+2016-07-30 03:01:24.1953989 UTC
 
 interface Haske_CCsxScH00Fh29Ph7qS09DD:LatexFormatter 7103
-  interface hash: d9d39310c3252b6e6a4e6f73ef00f681
-  ABI hash: b0b063c40c77ff449b337c3e908a4bfc
-  export-list hash: ad749f9793b68d53e13f1127983a0930
-  orphan hash: 693e9af84d3dfcc71e640e005bdc5e2e
+  interface hash: 75db95845970afa1ed1f48f5b3465189
+  ABI hash: 1067c1435e3baf8cc476b847236356b0
+  export-list hash: 421196c0a382cf69140d3f496dcfc49b
+  orphan hash: 42b44d74d62ed3cd0cbbe62b053481ef
   flag hash: 6fe5b62a773429de29d6bc64c829b518
   sig of: Nothing
   used TH splices: False
@@ -14,6 +14,7 @@ interface Haske_CCsxScH00Fh29Ph7qS09DD:LatexFormatter 7103
 exports:
   LatexFormatter.convertTokenlist
   LatexFormatter.processIndent
+  LatexFormatter.processIndentTokenlist
   LatexFormatter.tokenize
   LatexFormatter.Indent
 module dependencies:
@@ -26,8 +27,8 @@ family instance modules: base-4.8.2.0:Control.Applicative
                          base-4.8.2.0:Data.Either base-4.8.2.0:Data.Functor.Identity
                          base-4.8.2.0:Data.Monoid base-4.8.2.0:Data.Type.Equality
                          base-4.8.2.0:GHC.Generics
-import  -/  base-4.8.2.0:Control.Monad 480c5067477275068c9b98be08410df9
 import  -/  base-4.8.2.0:Data.Foldable 2ce969969ad5231eb40bd713f94f05ad
+import  -/  base-4.8.2.0:Data.Traversable 7576318f4ef8587ad947f87012b65abf
 import  -/  base-4.8.2.0:GHC.Base a4939789b2cfd60b36ed163e56a623cd
 import  -/  base-4.8.2.0:GHC.List 0c736920522bbd14b770342776012ab6
 import  -/  base-4.8.2.0:GHC.Num 9f42750c866f5832ca565146bd660c60
@@ -37,13 +38,208 @@ import  -/  mtl-2.2.1@mtl_Aue4leSeVkpKLsfHIV51E8:Control.Monad.State 3c811454592
 import  -/  mtl-2.2.1@mtl_Aue4leSeVkpKLsfHIV51E8:Control.Monad.State.Class 521f2360d2f7cec1d4be0e199fde9ee2
 import  -/  mtl-2.2.1@mtl_Aue4leSeVkpKLsfHIV51E8:Control.Monad.Writer cf71944512d0bdc490a44e3d3b7f624e
 import  -/  transformers-0.4.2.0@trans_GZTjP9K5WFq01xC9BAGQpF:Control.Monad.Trans.State.Lazy 442cc9f80155d8aaed5b22580b659d92
-a7c7a5f6be9539df58560d10c784b7fb
+0334c1e692987fa39bed17e52781d08e
+  $s$fApplicativeStateT ::
+    GHC.Base.Applicative
+      (Control.Monad.Trans.State.Lazy.StateT
+         GHC.Types.Int Data.Functor.Identity.Identity)
+  {- HasNoCafRefs, Strictness: m, Inline: [ALWAYS] CONLIKE,
+     Unfolding: DFun:.
+                  @ (Control.Monad.Trans.State.Lazy.StateT
+                       GHC.Types.Int Data.Functor.Identity.Identity)
+                  LatexFormatter.$s$fApplicativeStateT1
+                  (Control.Monad.Trans.State.Lazy.$fApplicativeStateT_$cpure
+                     @ GHC.Types.Int
+                     @ Data.Functor.Identity.Identity
+                     LatexFormatter.$s$fApplicativeStateT1
+                     Data.Functor.Identity.$fFunctorIdentity
+                     Data.Functor.Identity.$fMonadIdentity)
+                  (Control.Monad.Trans.State.Lazy.$fApplicativeStateT_$c<*>
+                     @ GHC.Types.Int
+                     @ Data.Functor.Identity.Identity
+                     LatexFormatter.$s$fApplicativeStateT1
+                     Data.Functor.Identity.$fFunctorIdentity
+                     Data.Functor.Identity.$fMonadIdentity)
+                  (Control.Monad.Trans.State.Lazy.$fApplicativeStateT_$c*>
+                     @ GHC.Types.Int
+                     @ Data.Functor.Identity.Identity
+                     LatexFormatter.$s$fApplicativeStateT1
+                     Data.Functor.Identity.$fFunctorIdentity
+                     Data.Functor.Identity.$fMonadIdentity)
+                  (Control.Monad.Trans.State.Lazy.$fApplicativeStateT_$c<*
+                     @ GHC.Types.Int
+                     @ Data.Functor.Identity.Identity
+                     LatexFormatter.$s$fApplicativeStateT1
+                     Data.Functor.Identity.$fFunctorIdentity
+                     Data.Functor.Identity.$fMonadIdentity) -}
+995a8de1479b7312c25f2fbd3a6ee132
+  $s$fApplicativeStateT1 ::
+    GHC.Base.Functor
+      (Control.Monad.Trans.State.Lazy.StateT
+         GHC.Types.Int Data.Functor.Identity.Identity)
+  {- Strictness: m,
+     Unfolding: InlineRule (0, True, True)
+                (LatexFormatter.$s$fApplicativeStateT_$s$fFunctorStateT
+                   @ GHC.Types.Int) -}
+45c8a44ca57be3ec8f69f2575617ef6d
+  $s$fApplicativeStateT_$s$fFunctorStateT ::
+    GHC.Base.Functor
+      (Control.Monad.Trans.State.Lazy.StateT
+         s Data.Functor.Identity.Identity)
+  {- HasNoCafRefs, Strictness: m, Inline: [ALWAYS] CONLIKE,
+     Unfolding: DFun: @ s.
+                  @ (Control.Monad.Trans.State.Lazy.StateT
+                       s Data.Functor.Identity.Identity)
+                  (Control.Monad.Trans.State.Lazy.$fFunctorStateT_$cfmap
+                     @ s
+                     @ Data.Functor.Identity.Identity
+                     Data.Functor.Identity.$fFunctorIdentity)
+                  (Control.Monad.Trans.State.Lazy.$fFunctorStateT_$c<$
+                     @ s
+                     @ Data.Functor.Identity.Identity
+                     Data.Functor.Identity.$fFunctorIdentity) -}
+7f9227f7bc8e69c81a6ea0498552dcdb
+  $s$fMonadStateT1 ::
+    GHC.Base.Applicative
+      (Control.Monad.Trans.State.Lazy.StateT
+         GHC.Types.Int Data.Functor.Identity.Identity)
+  {- Strictness: m,
+     Unfolding: InlineRule (0, True, True)
+                LatexFormatter.$s$fApplicativeStateT -}
+0812ac1ab1792319aa232f7ae95cabf9
+  $smapM ::
+    (a
+     -> Control.Monad.Trans.State.Lazy.StateT
+          LatexFormatter.Indent Data.Functor.Identity.Identity b)
+    -> [a]
+    -> Control.Monad.Trans.State.Lazy.StateT
+         LatexFormatter.Indent Data.Functor.Identity.Identity [b]
+  {- Arity: 2, HasNoCafRefs, Strictness: <L,C(U)><S,1*U>,
+     Inline: INLINE (sat-args=2),
+     Unfolding: InlineRule (2, False, False)
+                (\ @ a10
+                   @ b
+                   f :: a10
+                        -> Control.Monad.Trans.State.Lazy.StateT
+                             LatexFormatter.Indent Data.Functor.Identity.Identity b
+                   as :: [a10] ->
+                 GHC.Base.foldr
+                   @ a10
+                   @ (Control.Monad.Trans.State.Lazy.StateT
+                        LatexFormatter.Indent Data.Functor.Identity.Identity [b])
+                   (\ a11 :: a10
+                      r :: Control.Monad.Trans.State.Lazy.StateT
+                             LatexFormatter.Indent
+                             Data.Functor.Identity.Identity
+                             [b][OneShot] ->
+                    Control.Monad.Trans.State.Lazy.$fMonadStateT_$c>>=
+                      @ GHC.Types.Int
+                      @ Data.Functor.Identity.Identity
+                      LatexFormatter.$s$fMonadStateT1
+                      Data.Functor.Identity.$fMonadIdentity
+                      @ b
+                      @ [b]
+                      (f a11)
+                      (\ x :: b eta :: GHC.Types.Int ->
+                       (Control.Monad.Trans.State.Lazy.$fMonadStateT_$c>>=
+                          @ GHC.Types.Int
+                          @ Data.Functor.Identity.Identity
+                          LatexFormatter.$s$fMonadStateT1
+                          Data.Functor.Identity.$fMonadIdentity
+                          @ [b]
+                          @ [b]
+                          r
+                          (\ xs :: [b] eta1 :: GHC.Types.Int ->
+                           (Control.Monad.Trans.State.Lazy.$fMonadStateT_$creturn
+                              @ GHC.Types.Int
+                              @ Data.Functor.Identity.Identity
+                              LatexFormatter.$s$fMonadStateT1
+                              Data.Functor.Identity.$fMonadIdentity
+                              @ [b]
+                              (GHC.Types.: @ b x xs))
+                             `cast`
+                           (Control.Monad.Trans.State.Lazy.NTCo:StateT[0]
+                                <GHC.Types.Int>_N <Data.Functor.Identity.Identity>_R <[b]>_N)
+                             eta1)
+                            `cast`
+                          (<[b]>_R
+                           ->_R Sym (Control.Monad.Trans.State.Lazy.NTCo:StateT[0]
+                                         <GHC.Types.Int>_N
+                                         <Data.Functor.Identity.Identity>_R
+                                         <[b]>_N)))
+                         `cast`
+                       (Control.Monad.Trans.State.Lazy.NTCo:StateT[0]
+                            <GHC.Types.Int>_N <Data.Functor.Identity.Identity>_R <[b]>_N)
+                         eta)
+                        `cast`
+                      (<b>_R
+                       ->_R Sym (Control.Monad.Trans.State.Lazy.NTCo:StateT[0]
+                                     <GHC.Types.Int>_N <Data.Functor.Identity.Identity>_R <[b]>_N)))
+                   (Control.Monad.Trans.State.Lazy.$fMonadStateT_$creturn
+                      @ GHC.Types.Int
+                      @ Data.Functor.Identity.Identity
+                      LatexFormatter.$s$fMonadStateT1
+                      Data.Functor.Identity.$fMonadIdentity
+                      @ [b]
+                      (GHC.Types.[] @ b))
+                   as) -}
+f6620e38f959b8e91ee63f4b09c7f7ad
   $wa ::
-    [[LatexFormatter.Token]]
-    -> [[LatexFormatter.Token]]
+    [LatexFormatter.Token]
     -> LatexFormatter.Indent
-    -> (# [[LatexFormatter.Token]], LatexFormatter.Indent #)
-  {- Arity: 3, Strictness: <S,1*U><L,U><L,U(U)>, Inline: [0] -}
+    -> (# [LatexFormatter.Token], LatexFormatter.Indent #)
+  {- Arity: 2, Strictness: <S,1*U><L,U(U)>, Inline: [0],
+     Unfolding: (\ w :: [LatexFormatter.Token]
+                   w1 :: LatexFormatter.Indent ->
+                 case w of wild {
+                   [] -> (# GHC.Types.[] @ LatexFormatter.Token, w1 #)
+                   : ipv ipv1
+                   -> let {
+                        eta :: GHC.Types.Int
+                        = case LatexFormatter.$wa1 wild w1 of ww { (#,#) ww1 ww2 -> ww2 }
+                      } in
+                      (# case eta of wild1 { GHC.Types.I# x ->
+                         case w1 of wild2 { GHC.Types.I# y ->
+                         case GHC.Prim.tagToEnum#
+                                @ GHC.Types.Bool
+                                (GHC.Prim.># x y) of wild3 {
+                           GHC.Types.False
+                           -> GHC.Types.:
+                                @ [GHC.Types.Char]
+                                (let {
+                                   y1 :: GHC.Prim.Int# = GHC.Prim.*# 4 x
+                                 } in
+                                 case GHC.Prim.tagToEnum#
+                                        @ GHC.Types.Bool
+                                        (GHC.Prim.<# 0 y1) of wild4 {
+                                   GHC.Types.False -> GHC.Types.[] @ GHC.Types.Char
+                                   GHC.Types.True -> LatexFormatter.$wxs1 y1 })
+                                wild
+                           GHC.Types.True
+                           -> GHC.Types.:
+                                @ [GHC.Types.Char]
+                                (let {
+                                   y1 :: GHC.Prim.Int# = GHC.Prim.*# 4 y
+                                 } in
+                                 case GHC.Prim.tagToEnum#
+                                        @ GHC.Types.Bool
+                                        (GHC.Prim.<# 0 y1) of wild4 {
+                                   GHC.Types.False -> GHC.Types.[] @ GHC.Types.Char
+                                   GHC.Types.True -> LatexFormatter.$wxs y1 })
+                                wild } } },
+                         eta #) }) -}
+a71f93375acc955668c3b0ba64b8d331
+  $wa1 ::
+    [LatexFormatter.Token]
+    -> LatexFormatter.Indent
+    -> (# [LatexFormatter.Token], LatexFormatter.Indent #)
+  {- Arity: 2, Strictness: <S,1*U><L,U(U)>, Inline: [0] -}
+73c79c9b52d6704e9a38bbe90c65d77b
+  $wxs :: GHC.Prim.Int# -> [GHC.Types.Char]
+  {- Arity: 1, HasNoCafRefs, Strictness: <S,1*U>, Inline: [0] -}
+81acabf8f7db11482522e18457a16faf
+  $wxs1 :: GHC.Prim.Int# -> [GHC.Types.Char]
+  {- Arity: 1, HasNoCafRefs, Strictness: <S,1*U>, Inline: [0] -}
 ada4a8029a4f32318f80668ad7bd9672
   type Indent = GHC.Types.Int
 ca15e66755448b14304bea0d4e272970
@@ -56,66 +252,50 @@ ca15e66755448b14304bea0d4e272970
 c504d1db9062859e985edad1c0d9bfb9
   convertTokenlist_go :: [LatexFormatter.Token] -> GHC.Base.String
   {- Arity: 1, Strictness: <S,1*U> -}
-9060db427da3534deebddaa8016204e3
+2bd136aef82c598067d7b27697665bb5
   processIndent ::
     [[LatexFormatter.Token]]
     -> Control.Monad.Trans.State.Lazy.State
          LatexFormatter.Indent [[LatexFormatter.Token]]
+  {- Arity: 1,
+     Unfolding: (LatexFormatter.$smapM
+                   @ [LatexFormatter.Token]
+                   @ [LatexFormatter.Token]
+                   LatexFormatter.processIndent1
+                     `cast`
+                   (<[LatexFormatter.Token]>_R
+                    ->_R Sym (Control.Monad.Trans.State.Lazy.NTCo:StateT[0]
+                                  <LatexFormatter.Indent>_N
+                                  <Data.Functor.Identity.Identity>_R
+                                  <[LatexFormatter.Token]>_N))) -}
+30cec323a48aad42b9cc38fff27a18af
+  processIndent1 ::
+    [LatexFormatter.Token]
+    -> LatexFormatter.Indent
+    -> Data.Functor.Identity.Identity
+         ([LatexFormatter.Token], LatexFormatter.Indent)
+  {- Arity: 2, Strictness: <S,1*U><L,U(U)>m, Inline: INLINE[0],
+     Unfolding: InlineRule (2, True, False)
+                (\ w :: [LatexFormatter.Token] w1 :: LatexFormatter.Indent ->
+                 case LatexFormatter.$wa w w1 of ww { (#,#) ww1 ww2 ->
+                 (ww1, ww2)
+                   `cast`
+                 (Sym (Data.Functor.Identity.NTCo:Identity[0]
+                           <([LatexFormatter.Token], LatexFormatter.Indent)>_R)) }) -}
+1e8cc39fc6205202c2bfec8c4582fe3c
+  processIndentTokenlist ::
+    [LatexFormatter.Token]
+    -> Control.Monad.Trans.State.Lazy.State
+         LatexFormatter.Indent [LatexFormatter.Token]
   {- Arity: 2, Strictness: <S,1*U><L,U(U)>m,
      Unfolding: InlineRule (0, True, True)
                 LatexFormatter.processIndent1
                   `cast`
-                (<[[LatexFormatter.Token]]>_R
+                (<[LatexFormatter.Token]>_R
                  ->_R Sym (Control.Monad.Trans.State.Lazy.NTCo:StateT[0]
                                <LatexFormatter.Indent>_N
                                <Data.Functor.Identity.Identity>_R
-                               <[[LatexFormatter.Token]]>_N)) -}
-525726f33f66765d588c141fdb700137
-  processIndent1 ::
-    [[LatexFormatter.Token]]
-    -> LatexFormatter.Indent
-    -> Data.Functor.Identity.Identity
-         ([[LatexFormatter.Token]], LatexFormatter.Indent)
-  {- Arity: 2, Strictness: <S,1*U><L,U(U)>m, Inline: INLINE[0],
-     Unfolding: InlineRule (2, True, False)
-                (\ w :: [[LatexFormatter.Token]] w1 :: LatexFormatter.Indent ->
-                 case w of wild {
-                   []
-                   -> (GHC.Types.[] @ [LatexFormatter.Token], w1)
-                        `cast`
-                      (Sym (Data.Functor.Identity.NTCo:Identity[0]
-                                <([[LatexFormatter.Token]], LatexFormatter.Indent)>_R))
-                   : ipv ipv1
-                   -> let {
-                        a9 :: Data.Functor.Identity.Identity
-                                ([[LatexFormatter.Token]], GHC.Types.Int)
-                        = case LatexFormatter.$wa
-                                 wild
-                                 (GHC.Types.[] @ [LatexFormatter.Token])
-                                 w1 of ww { (#,#) ww1 ww2 ->
-                          (ww1, ww2)
-                            `cast`
-                          (Sym (Data.Functor.Identity.NTCo:Identity[0]
-                                    <([[LatexFormatter.Token]], LatexFormatter.Indent)>_R)) }
-                      } in
-                      (case a9
-                              `cast`
-                            (Data.Functor.Identity.NTCo:Identity[0]
-                                 <([[LatexFormatter.Token]],
-                                   GHC.Types.Int)>_R) of wild1 { (,) a10 s' ->
-                       GHC.List.reverse1
-                         @ [LatexFormatter.Token]
-                         a10
-                         (GHC.Types.[] @ [LatexFormatter.Token]) },
-                       case a9
-                              `cast`
-                            (Data.Functor.Identity.NTCo:Identity[0]
-                                 <([[LatexFormatter.Token]],
-                                   GHC.Types.Int)>_R) of wild1 { (,) a10 s' ->
-                       s' })
-                        `cast`
-                      (Sym (Data.Functor.Identity.NTCo:Identity[0]
-                                <([[LatexFormatter.Token]], LatexFormatter.Indent)>_R)) }) -}
+                               <[LatexFormatter.Token]>_N)) -}
 8c57391b0b57386e11c46e27b392fe9c
   tokenize :: GHC.Base.String -> [LatexFormatter.Token]
   {- Arity: 1, HasNoCafRefs, Strictness: <S,1*U>,
@@ -150,6 +330,39 @@ c176674d2af8ac95e3216934d052e96c
   tokenize_go ::
     [GHC.Types.Char] -> [[GHC.Types.Char]] -> [[GHC.Types.Char]]
   {- Arity: 2, HasNoCafRefs, Strictness: <S,1*U><S,1*U> -}
+"SPEC/LatexFormatter $fApplicativeStateT @ Int @ Identity" [ALWAYS] forall $dFunctor :: GHC.Base.Functor
+                                                                                          (Control.Monad.Trans.State.Lazy.StateT
+                                                                                             GHC.Types.Int
+                                                                                             Data.Functor.Identity.Identity)
+                                                                           $dFunctor1 :: GHC.Base.Functor
+                                                                                           Data.Functor.Identity.Identity
+                                                                           $dMonad :: GHC.Base.Monad
+                                                                                        Data.Functor.Identity.Identity
+  Control.Monad.Trans.State.Lazy.$fApplicativeStateT @ GHC.Types.Int
+                                                     @ Data.Functor.Identity.Identity
+                                                     $dFunctor
+                                                     $dFunctor1
+                                                     $dMonad
+  = LatexFormatter.$s$fApplicativeStateT
+"SPEC/LatexFormatter $fFunctorStateT _ @ Identity" [ALWAYS] forall @ s
+                                                                   $dFunctor :: GHC.Base.Functor
+                                                                                  Data.Functor.Identity.Identity
+  Control.Monad.Trans.State.Lazy.$fFunctorStateT @ s
+                                                 @ Data.Functor.Identity.Identity
+                                                 $dFunctor
+  = LatexFormatter.$s$fApplicativeStateT_$s$fFunctorStateT @ s
+"SPEC/LatexFormatter mapM _ @ (StateT Indent Identity) _" [ALWAYS] forall @ a10
+                                                                          @ b
+                                                                          $dMonad :: GHC.Base.Monad
+                                                                                       (Control.Monad.Trans.State.Lazy.StateT
+                                                                                          LatexFormatter.Indent
+                                                                                          Data.Functor.Identity.Identity)
+  GHC.Base.mapM @ a10
+                @ (Control.Monad.Trans.State.Lazy.StateT
+                     LatexFormatter.Indent Data.Functor.Identity.Identity)
+                @ b
+                $dMonad
+  = LatexFormatter.$smapM @ a10 @ b
 vectorised variables:
 vectorised tycons:
 vectorised reused tycons:

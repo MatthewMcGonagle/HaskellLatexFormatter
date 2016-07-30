@@ -11,7 +11,7 @@ main = do
     contents <- hGetContents handle
     let mystringlist = lines contents
         tokenlists = map tokenize mystringlist
-    putStrLn "\nInitial Input String List:"
+    putStrLn "\nInput as a list of String:"
     sequence $ map putStrLn mystringlist
 
     let statelist = processIndent tokenlists 
@@ -20,7 +20,7 @@ main = do
     putStrLn "\nAs lists of Token after Indent processing:"
     sequence $ map print newtokenlists
 
-    putStrLn "\nOutput as lists of String:"
+    putStrLn "\nOutput as a list of String:"
     sequence $ map putStrLn newstringlist
     
     hClose handle

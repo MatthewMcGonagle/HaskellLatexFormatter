@@ -1,6 +1,7 @@
 module LatexFormatter
 ( tokenize
 , processIndent
+, processIndentTokenlist
 , Indent
 , convertTokenlist
 ) where
@@ -34,31 +35,29 @@ tokenize x =  removeemptyToken . reverse . (map reverse) $ foldl
     []
     x
 
-tokentoIndent :: Token -> Indent
-tokentoIndent x 
-     | x == "\\begin" = 1
-     | x == "\\end" = -1
-     | otherwise = 0
- 
-findIndentchange :: [Token] -> Indent
-findIndentchange [] = 0
-findIndentchange x = foldl (\acc y -> acc + (tokentoIndent y)) 0 x
+processIndentToken :: Token -> State Indent Token
+processIndentToken x = do
+     current <- get
+     let changeIndent = case x of 
+          "\\begin" -> 1
+          "\\end" -> -1 
+          otherwise -> 0
+     put $ current + changeIndent
+     return x
+
+processIndentTokenlist :: [Token] -> State Indent [Token]
+processIndentTokenlist [] = return []
+processIndentTokenlist x = do
+      current <- get
+      listToken <- mapM processIndentToken x
+      newIndent <- get
+      let newlistToken = case newIndent > current of
+               True -> (replicate (4*current) ' '):x
+               False -> (replicate (4*newIndent) ' '):x
+      return newlistToken
 
 processIndent :: [[Token]] -> State Indent [[Token]]
-processIndent [] = return []
-processIndent x = do
-                      wrongorder <- foldM accIndentmap [] x
-                      return $ reverse wrongorder 
-     where accIndentmap :: [[Token]] -> [Token] -> State Indent [[Token]]
-           accIndentmap acc y = do
-                currentIndent <- get
-                let indentchange = findIndentchange y
-                    newIndent = currentIndent + indentchange 
-                    newTokenlist = case indentchange > 0 of 
-                         True -> (replicate (4*currentIndent) ' '):y
-                         False -> (replicate (4*newIndent) ' '):y 
-                put newIndent
-                return (newTokenlist:acc)
+processIndent = mapM processIndentTokenlist
 
 convertTokentoString :: Token -> String
 convertTokentoString x  

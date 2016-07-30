@@ -14,7 +14,7 @@ main = do
     putStrLn "\nInput as a list of String:"
     sequence $ map putStrLn mystringlist
 
-    let statelist = processIndent tokenlists 
+    let statelist = mapM processIndentTokenlist tokenlists 
         newtokenlists = fst $ runState statelist 0
         newstringlist = map convertTokenlist newtokenlists
     putStrLn "\nAs lists of Token after Indent processing:"
