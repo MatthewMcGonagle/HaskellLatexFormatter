@@ -23,5 +23,9 @@ main = do
     putStrLn "\nOutput as a list of String:"
     sequence $ map putStrLn newstringlist
     
+    putStrLn "\nTest of finding equations:"
+    let neweqlist = mapM (mapM findEq) newtokenlists
+    sequence $ map print (fst $ runState neweqlist Normal)
+
     hClose handle
     return ()
