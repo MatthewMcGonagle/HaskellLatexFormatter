@@ -7,16 +7,20 @@ module LatexFormatter
 , findBegin
 , findEq
 , FindState(..)
+, EqState(..)
 ) where
 
 import Control.Monad.Writer
 import Control.Monad.State
+import Data.Monoid
 
 type Token = String
-type Indent = Int
+type Indent a = State Int a
 
-data Eqref = Eqref { origref :: String, eqnum :: Int}
+data Eqref = Eqref { origref :: String, eqnum :: Int} deriving (Show)
 data FindState = Normal | Begin | Equation | EqLabel | LabelName | End
+data EqState = EqState {findstate :: FindState, eqcount :: Int}
+type FindEq a = WriterT [Eqref] (State EqState) a
 
 appendchar :: [String] -> Char -> [String]
 appendchar [] x = case x of
@@ -45,7 +49,7 @@ tokenize x =  removeemptyToken . reverse . (map reverse) $ foldl
     []
     x
 
-processIndentToken :: Token -> State Indent Token
+processIndentToken :: Token -> Indent Token
 processIndentToken x = do
      current <- get
      let changeIndent = case x of 
@@ -55,7 +59,7 @@ processIndentToken x = do
      put $ current + changeIndent
      return x
 
-processIndentTokenlist :: [Token] -> State Indent [Token]
+processIndentTokenlist :: [Token] -> Indent [Token]
 processIndentTokenlist [] = return []
 processIndentTokenlist x = do
       current <- get
@@ -66,7 +70,7 @@ processIndentTokenlist x = do
                False -> (replicate (4*newIndent) ' '):x
       return newlistToken
 
-processIndent :: [[Token]] -> State Indent [[Token]]
+processIndent :: [[Token]] -> Indent [[Token]]
 processIndent = mapM processIndentTokenlist
 
 convertTokentoString :: Token -> String
@@ -96,52 +100,55 @@ testtokenend x
     | x == '}' = True
     | otherwise = False
 
-findEq :: Token -> State FindState Token
+findEq :: Token -> FindEq Token
 findEq x = do
      current <- get
-     case current of
+     let search = findstate current
+         count = eqcount current
+     case search of
            Normal -> case x of
                  "\\begin" -> do 
-                       put Begin
+                       put $ EqState Begin count
                        return x 
                  otherwise -> return x
            Begin -> case x of 
                  "{" -> return x 
                  "equation" -> do
-                       put Equation
+                       put $ EqState Equation (count+1)
                        return "EQUATION"
                  otherwise -> do
-                       put Normal
+                       put $ EqState Normal count
                        return x
 
            Equation -> case x of
                  "\\end" -> do
-                        put End
+                        put $ EqState End count
                         return x 
                  "\\label" -> do 
-                        put EqLabel
+                        put $ EqState EqLabel count
                         return x
                  otherwise -> return x
 
            EqLabel -> case x of
                  "{" -> do
-                       put LabelName
+                       put $ EqState LabelName count
                        return x
                  otherwise -> do
-                       put Equation
+                       put $ EqState Equation count
                        return x
 
            LabelName -> do
-                 put Equation
-                 return $ "FOUND" ++ x
+                 put $ EqState Equation count
+                 tell $ [Eqref x count]
+                 return x
 
            End -> case x of
                 "{" -> return x
                 "equation" -> do
-                      put Normal
+                      put $ EqState Normal count
                       return "EQUATION"
                 otherwise -> do
-                      put Equation
+                      put $ EqState Equation count
                       return x
 
 findBegin :: Token -> State Bool [Token]

@@ -2,6 +2,7 @@ module Main where
 
 import Lib
 import Control.Monad.State
+import Control.Monad.Writer
 import LatexFormatter
 import System.IO
 
@@ -25,7 +26,13 @@ main = do
     
     putStrLn "\nTest of finding equations:"
     let neweqlist = mapM (mapM findEq) newtokenlists
-    sequence $ map print (fst $ runState neweqlist Normal)
+        initstate = EqState Normal 0
+        witheqcount = runState (runWriterT neweqlist) initstate 
+    sequence . (map print) . fst . fst $ witheqcount
+    putStrLn "\n The equation count: "
+    print . eqcount . snd $ witheqcount
+    putStrLn "\n The equation reference list: "
+    sequence . (map print) . snd. fst  $ witheqcount
 
     hClose handle
     return ()
