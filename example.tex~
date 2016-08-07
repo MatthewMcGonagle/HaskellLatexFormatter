@@ -21,4 +21,8 @@ World, are you there?
 	      \int f(x) \, dx = \frac{3}{2} 
           \end{equation}
 
+	  \begin{equation}
+\iint g(x) \, dx = \frac{2}{\pi}
+\end{equation}
+
 \end{document       }

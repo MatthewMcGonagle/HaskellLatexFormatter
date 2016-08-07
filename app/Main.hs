@@ -28,7 +28,6 @@ main = do
     let neweqlist = mapM (mapM findEq) newtokenlists
         initstate = EqState Normal 0
         witheqcount = runState (runWriterT neweqlist) initstate 
-    sequence . (map print) . fst . fst $ witheqcount
     putStrLn "\n The equation count: "
     print . eqcount . snd $ witheqcount
     putStrLn "\n The equation reference list: "
