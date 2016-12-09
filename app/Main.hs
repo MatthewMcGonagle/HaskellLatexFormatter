@@ -5,6 +5,7 @@ import Control.Monad.State
 import Control.Monad.Writer
 import LatexFormatter
 import System.IO
+import qualified Text.ParserCombinators.Parsec as Parsec
 
 main :: IO ()
 main = do
@@ -12,8 +13,15 @@ main = do
     contents <- hGetContents handle
     let mystringlist = lines contents
         tokenlists = map tokenize mystringlist
+        tokenlists2 = map parseline  mystringlist
     putStrLn "\nInput as a list of String:"
     sequence $ map putStrLn mystringlist
+
+    putStrLn "\nToken Lists generated using Parsec:"
+    let errormap :: Either Parsec.ParseError [Token] -> [Token]
+        errormap (Right x) = x
+        errormap (Left x) = []
+    sequence $ map print (map errormap tokenlists2)
 
     let statelist = mapM processIndentTokenlist tokenlists 
         newtokenlists = fst $ runState statelist 0

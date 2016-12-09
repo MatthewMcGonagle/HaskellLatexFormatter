@@ -1,18 +1,20 @@
 module LatexFormatter
 ( tokenize
+, parseline 
 , processIndent
 , processIndentTokenlist
 , Indent
 , convertTokenlist
-, findBegin
 , findEq
 , FindState(..)
 , EqState(..)
+, Token
 ) where
 
 import Control.Monad.Writer
 import Control.Monad.State
 import Data.Monoid
+import qualified Text.ParserCombinators.Parsec as P
 
 type Token = String
 type Indent a = State Int a
@@ -23,6 +25,30 @@ data FindState = Normal | Begin | Equation | EqLabel | LabelName | End
      deriving (Eq)
 data EqState = EqState {findstate :: FindState, eqcount :: Int}
 type FindEq a = WriterT [Eqref] (State EqState) a
+
+tokenizeline :: P.GenParser Char st [Token]
+tokenizeline = 
+        do
+            P.try manyspaces -- P.<|> return ' ' -- clear initial whitespace 
+            P.sepBy tokenizetext manyspaces
+    where manyspaces = 
+                do
+                    P.manyTill (P.char ' ') $ P.lookAhead (P.try (P.noneOf " "))
+                    return ' ' 
+
+tokenizetext :: P.GenParser Char st Token
+tokenizetext = 
+    do
+        let checkslash = P.try (P.string "\\\\") -- check for double \
+                         P.<|> P.try (P.string "\\") 
+                         P.<|> return " " 
+        result <- checkslash
+        letters <- P.many ( P.noneOf " \\" ) 
+        let putinslash "\\" x = '\\':x
+            putinslash _ x = x
+        return $ putinslash result letters 
+
+parseline input = P.parse tokenizeline "An Error Occurred" input
 
 appendchar :: [String] -> Char -> [String]
 appendchar [] x = case x of
@@ -131,17 +157,6 @@ findEq x = do
           otherwise -> tell []
      put $ EqState newsearch newcount
      return x
-
-findBegin :: Token -> State Bool [Token]
-findBegin x = do
-     current <- get
-     case current of
-          True -> return [x]
-          False -> case x of
-               "\\begin" -> do
-                      put True
-                      return [x]
-               otherwise -> return []
 
 findEqref :: [Token] -> Writer [Eqref] [Token]
 findEqref x = return x
