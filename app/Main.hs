@@ -13,12 +13,12 @@ main = do
     contents <- hGetContents handle
     let mystringlist = lines contents
         tokenlists = map tokenize mystringlist
-        tokenlists2 = map parseline  mystringlist
+        tokenlists2 = map parsetokenline  mystringlist
     putStrLn "\nInput as a list of String:"
     sequence $ map putStrLn mystringlist
 
     putStrLn "\nToken Lists generated using Parsec:"
-    let errormap :: Either Parsec.ParseError [Token] -> [Token]
+    let errormap :: Either Parsec.ParseError [a] -> [a]
         errormap (Right x) = x
         errormap (Left x) = []
     sequence $ map print (map errormap tokenlists2)

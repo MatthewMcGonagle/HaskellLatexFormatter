@@ -1,6 +1,7 @@
 module LatexFormatter
-( tokenize
-, parseline 
+( tokenline
+, parsetokenline
+, tokenize
 , processIndent
 , processIndentTokenlist
 , Indent
@@ -17,6 +18,8 @@ import Data.Monoid
 import qualified Text.ParserCombinators.Parsec as P
 
 type Token = String
+data Textoken = Command String | Prose String | Symbol Char
+     deriving (Show)
 type Indent a = State Int a
 
 data Eqref = Eqref { origref :: String, eqnum :: Int} 
@@ -26,29 +29,41 @@ data FindState = Normal | Begin | Equation | EqLabel | LabelName | End
 data EqState = EqState {findstate :: FindState, eqcount :: Int}
 type FindEq a = WriterT [Eqref] (State EqState) a
 
-tokenizeline :: P.GenParser Char st [Token]
-tokenizeline = 
-        do
-            P.try manyspaces -- P.<|> return ' ' -- clear initial whitespace 
-            P.sepBy tokenizetext manyspaces
-    where manyspaces = 
-                do
-                    P.manyTill (P.char ' ') $ P.lookAhead (P.try (P.noneOf " "))
-                    return ' ' 
+parsetokenline input = P.parse tokenline "An Error occurred." input
+ 
+tokenline :: P.GenParser Char st [Textoken]
+tokenline = (P.try P.spaces P.<|> return ()) >> P.endBy tokenword P.spaces
 
-tokenizetext :: P.GenParser Char st Token
-tokenizetext = 
-    do
-        let checkslash = P.try (P.string "\\\\") -- check for double \
-                         P.<|> P.try (P.string "\\") 
-                         P.<|> return " " 
-        result <- checkslash
-        letters <- P.many ( P.noneOf " \\" ) 
-        let putinslash "\\" x = '\\':x
-            putinslash _ x = x
-        return $ putinslash result letters 
+whitespace :: P.GenParser Char st () 
+whitespace = P.skipMany1 $  P.char ' '
 
-parseline input = P.parse tokenizeline "An Error Occurred" input
+tokenword :: P.GenParser Char st Textoken
+tokenword = P.try prose 
+            P.<|> P.try slashprose
+            P.<|> P.try texsymbol
+            P.<|> P.try texcommand 
+            P.<?> "Token Word" 
+
+slashprose :: P.GenParser Char st Textoken
+slashprose = do
+                doubleslash <- P.lookAhead (P.string "\\\\")
+                Prose following <- P.try prose
+                return $ Prose ("\\\\" ++ following) 
+
+texcommand :: P.GenParser Char st Textoken
+texcommand = do
+                slash <- P.char '\\'
+                Prose name <- prose
+                return $ Command name
+
+texsymbol :: P.GenParser Char st Textoken
+texsymbol = fmap (\ x -> Symbol x) $ P.oneOf "{}"
+
+prose :: P.GenParser Char st Textoken
+prose =  do
+            letters <- P.many1 (P.noneOf nonlist)
+            return $ Prose letters
+    where nonlist = " \\{}"
 
 appendchar :: [String] -> Char -> [String]
 appendchar [] x = case x of
